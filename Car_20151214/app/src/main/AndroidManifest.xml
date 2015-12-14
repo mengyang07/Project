@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    package="com.lkmy.illegal.car"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        >
+        <activity
+            android:name=".ui.activity.OpenActivity"
+            >
+            <intent-filter>
+
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.activity.LoginActivity"
+            />
+
+        <activity
+            android:name=".ui.activity.MainActivity"
+            />
+
+        <activity
+            android:name=".ui.activity.MainActivity1"/>
+        <activity
+            android:name=".ui.activity.WebActivity"
+            />
+
+
+        <!-- 声明Mogo的Activity -->
+        <activity
+            android:name="com.lkmy.module.lib.av.LibWebView"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name">
+        </activity>
+
+        <!-- 声明芒果视频广告activity -->
+        <activity
+            android:name="com.lkmy.module.lib.itl.video.LibVideoActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:screenOrientation="landscape"/>
+
+        <!-- 注册Service，自主广告与交换广告的应用下载功能所需 -->
+
+        <service
+            android:name="com.lkmy.module.lib.controller.service.UpdateService"
+            android:exported="true"
+            android:process=":remote"/>
+
+        <!-- 注册Service，安装应用所用 -->
+
+        <service
+            android:name="com.lkmy.module.lib.controller.service.CountService"
+            android:exported="true"
+            android:process=":remote"/>
+
+        <!-- 注册Service，信息流广告安装应用所用 -->
+
+        <service
+            android:name="com.lkmy.module.lib.natives.service.ActService"
+            android:exported="false"
+            android:process=":remote"/>
+
+        <service
+            android:name=".BgService"/>
+
+        <receiver android:name=".BgReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <category android:name="android.intent.category.HOME"/>
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+    <!-- 开机启动权限 -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <!-- 在SDCard中创建与删除文件权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <!-- 往SDCard写入数据权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!-- 往SDCard读取数据权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!-- 访问网络权限 -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.DOWNLOAD_WITH_NOTIFICATION"/>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+</manifest>
+
